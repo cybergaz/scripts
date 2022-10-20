@@ -4,5 +4,5 @@ list=( $(sudo updatedb && cd / && sudo locate $temp) )
 
 for i in "${list[@]}"
 do
-	sudo rm -r $i
+	sudo rm -rf $i
 done
