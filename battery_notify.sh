@@ -17,17 +17,17 @@ while [ true ]; do
 				full_flag=1
 			fi
 		fi
-		SLEEP_TIME=100
+		SLEEP_TIME=30
 
 	else 											# -- discharging state
 
 		full_flag=0
 		if (( $capc >= 60 )); then
-		       SLEEP_TIME=80
+		       SLEEP_TIME=40
 	        else
-		       SLEEP_TIME=60
+		       SLEEP_TIME=30
 		       if (( $capc <= 10 )); then
-			       SLEEP_TIME=30
+			       SLEEP_TIME=20
 			       if (( low_flag != 1 )); then
 			       		notify-send "  Battery LOW" "\nPlug-in the charger asap.." -u critical -t 6000
 					low_flag=1
@@ -35,14 +35,14 @@ while [ true ]; do
 
 		       fi
 		       if (( $capc <= 5 )); then
-			       SLEEP_TIME=20
+			       SLEEP_TIME=15
 			       if (( crit_flag != 1 )); then
 			       		notify-send "  CRITICAL level reached" "Plug-in the fuckin charger\ni'm gonna die...." -u critical -t 8000
 					crit_flag=1
 			       fi
 		       fi
 		       if (( $capc <= 3 )); then
-			       SLEEP_TIME=20
+			       SLEEP_TIME=10
 			       if (( vcrit_flag != 1 )); then
 			       		notify-send "  Out Of Juice" "\nSHUTDOWN in 1 minute.." -u critical -t 10000
 			       		shutdown
