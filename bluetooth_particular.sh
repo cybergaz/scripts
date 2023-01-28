@@ -1,7 +1,7 @@
 bluetoothctl power on
-if bluetoothctl connect 38:8F:30:0A:EE:9D | grep -q "successful" ; 
+if bluetoothctl connect 74:D7:13:00:D6:8B | grep -q "successful" ; 
 then 
-	notify-send "Bluetooth" "Galaxy Buds Connected..." ; 
+	notify-send "Bluetooth" "Air 3 Connected..." ; 
 else 
-	notify-send "Bluetooth" "Failed to connect..." ; 
+	notify-send "Watch out ... Watch out...." "you have done something wrong..." ; 
 fi
