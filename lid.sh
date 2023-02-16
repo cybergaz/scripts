@@ -1,0 +1,3 @@
+alacritty &
+alacritty &
+kitty nmtui &

@@ -1,0 +1,17 @@
+battery_notify.sh
+bluetooth_particular.sh
+bluetooth.sh
+cliphist.sh
+greetings.sh
+nix_search.sh
+Remove_**.sh
+task.sh
+tasks.sh
+temp2.sh
+tmp.txt
+volumedown.sh
+volumeup.sh
+wallpaper.sh
+welcome.sh
+wifi.sh
+wofi-emoji
