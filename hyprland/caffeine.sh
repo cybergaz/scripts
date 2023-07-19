@@ -12,10 +12,10 @@ function get_notification_id {
 
 nid=$(get_notification_id)
 
-if pgrep -x sleep.sh > /dev/null; then
-	notify-send -p -r $nid -i /usr/share/icons/Papirus-Dark/symbolic/status/my-caffeine-on-symbolic.svg "Caffeine Enabled" > $NotificationID_File
-  kill -9 $(pgrep swayidle | tail -1)
+if pgrep -x swayidle.sh > /dev/null; then
+	notify-send -p -r $nid ".  Caffeine Enabled  ." > $NotificationID_File
+  pkill swayidle
 else
-	notify-send -p -r $nid -i /usr/share/icons/Papirus-Dark/symbolic/status/my-caffeine-off-symbolic.svg "Caffeine Disabled" > $NotificationID_File
-        ~/.config/hypr/scripts/sleep.sh &
+	notify-send -p -r $nid "Caffeine Disabled" > $NotificationID_File
+  $HOME/scripts/hyprland/swayidle.sh &
 fi
