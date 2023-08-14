@@ -45,6 +45,7 @@ echo "ff02::2    ip6-allrouters" >>/etc/hosts
 echo "127.0.1.1       $hostname.localdomain $hostname" >>/etc/hosts
 mkinitcpio -P
 passwd
+
 pacman --noconfirm -S grub efibootmgr os-prober
 lsblk
 echo "Enter EFI partition: "
@@ -55,6 +56,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 sed -i 's/quiet/pci=noaer/g' /etc/default/grub
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
 sed -i 's/#GRUB_DISABLE_OS_PROBER=true/GRUB_DISABLE_OS_PROBER=false/g' /etc/default/grub
+mount $efipartition /boot/efi/
 os-prober
 grub-mkconfig -o /boot/grub/grub.cfg
 
