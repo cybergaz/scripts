@@ -3,7 +3,7 @@ clear
 echo "Welcome to Gaz's arch installer script"
 sleep 1
 sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 10/" /etc/pacman.conf
-reflector --country "Austrelia,Germany,India,Taiwan,Singapore" --save /etc/pacman.d/mirrorlist
+reflector --country "Austrelia,Germany,India,Taiwan,Singapore,Thailand,China" --save /etc/pacman.d/mirrorlist
 pacman --noconfirm -Sy archlinux-keyring
 loadkeys us
 timedatectl set-ntp true
@@ -26,11 +26,10 @@ genfstab -U /mnt >>/mnt/etc/fstab
 sed '1,/^#part2$/d' $(basename $0) >/mnt/arch_install2.sh
 chmod +x /mnt/arch_install2.sh
 arch-chroot /mnt ./arch_install2.sh
+exit
 
 #part2
 clear
-sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 10/" /etc/pacman.conf
-reflector --country "Austrelia,Germany,India,Taiwan,Singapore" --save /etc/pacman.d/mirrorlist
 ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 hwclock --systohc
 echo "en_US.UTF-8 UTF-8" >>/etc/locale.gen
@@ -48,6 +47,8 @@ echo "127.0.1.1       $hostname.localdomain $hostname" >>/etc/hosts
 mkinitcpio -P
 passwd
 
+sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 10/" /etc/pacman.conf
+reflector --country "Austrelia,Germany,India,Taiwan,Singapore,Thailand,China" --save /etc/pacman.d/mirrorlist
 pacman --noconfirm -Sy grub efibootmgr os-prober
 lsblk
 echo "Enter EFI partition: "
@@ -57,12 +58,10 @@ mount $efipartition /boot/efi
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchLinux
 sed -i 's/quiet/pci=noaer/g' /etc/default/grub
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
-sed -i 's/#GRUB_DISABLE_OS_PROBER=true/GRUB_DISABLE_OS_PROBER=false/g' /etc/default/grub
-mount $efipartition /boot/efi/
-os-prober
+sed -i 's/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman -Sy --noconfirm networkmanager wpa_supplicant rsync zip unzip unrar fzf git
+pacman -Sy --noconfirm networkmanager wpa_supplicant rsync zip unzip unrar fzf git vim
 
 systemctl enable NetworkManager.service
 
@@ -74,7 +73,7 @@ passwd $username
 
 sed -i 's/#HandlePowerKey=poweroff/HandlePowerKey=ignore/' /etc/systemd/logind.conf
 sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
-sed -i 's/##HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/' /etc/systemd/logind.conf
+sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/' /etc/systemd/logind.conf
 
 echo "Pre-Installation Finish Reboot now"
 
