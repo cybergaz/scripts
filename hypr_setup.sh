@@ -2,17 +2,20 @@
 sudo pacman -S --needed git base-devel reflector && git clone https://aur.archlinux.org/yay.git ~/yay_build && cd ~/yay_build && makepkg -si
 rm -rf ~/yay_build
 
-reflector --country "Austrelia,Germany,India,Taiwan,Singapore,Thailand,China" --save /etc/pacman.d/mirrorlist
+mkdir /tmp/hyprland
+git clone https://github.com/cybergaz/Hyprland_Rice /tmp/hyprland
+
+sudo cp /tmp/hyprland/pacman.conf /etc/pacman.conf
 sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+sudo cp /tmp/hyprland/mirrorlist /etc/pacman.d/mirrorlist
+
+sudo reflector --country "Austrelia,Germany,India,Taiwan,Singapore,Thailand,China" --save /etc/pacman.d/mirrorlist
 
 yay -S rate-mirrors-bin gvim wget
 rate-mirrors --allow-root arch | sudo tee /etc/pacman.d/mirrorlist
 yay -Syu
 
 yay -S make wlroots wayland-protocols pkgconf ninja patch catch2 waybar-hyprland-git brightnessctl pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber polkit-gnome grim slurp firefox hyprland-git wofi alacritty nemo mako neofetch btop viewnior swaybg swayidle swaylock-effects waylogout-git swww zoxide cliphist wtype wl-clipboard layan-gtk-theme-git kora-icon-theme ttf-twemoji-color noto-fonts-emoji bluez bluez-utils mpv ffmpeg gparted greetd greetd-tuigreet foot-git noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-jetbrains-mono ttf-joypixels ttf-font-awesome acpi
-
-mkdir /tmp/hyprland
-git clone https://github.com/cybergaz/Hyprland_Rice /tmp/hyprland
 
 mkdir -p ~/.local/bin
 cp -r /tmp/hyprland/.config ~
