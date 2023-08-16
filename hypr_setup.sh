@@ -1,17 +1,21 @@
 #!/bin/bash
-sudo pacman -S --needed git base-devel reflector && git clone https://aur.archlinux.org/yay.git ~/yay_build && cd ~/yay_build && makepkg -si
+sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+sudo cp ~/scripts/mirrorlist /etc/pacman.d/mirrorlist
+sudo cp ~/scripts/pacman.conf /etc/pacman.conf
+
+sudo pacman -Sy --needed git base-devel && git clone https://aur.archlinux.org/yay.git ~/yay_build && cd ~/yay_build && makepkg -si
 rm -rf ~/yay_build
 
 mkdir /tmp/hyprland
 git clone https://github.com/cybergaz/Hyprland_Rice /tmp/hyprland
 
-sudo cp /tmp/hyprland/pacman.conf /etc/pacman.conf
-sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
-sudo cp /tmp/hyprland/mirrorlist /etc/pacman.d/mirrorlist
+# sudo cp /tmp/hyprland/pacman.conf /etc/pacman.conf
+# sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+# sudo cp /tmp/hyprland/mirrorlist /etc/pacman.d/mirrorlist
 
-sudo reflector --country "Austrelia,Germany,India,Taiwan,Singapore,Thailand,China" --save /etc/pacman.d/mirrorlist
+# sudo reflector --country "Austrelia,Germany,India,Taiwan,Singapore,Thailand,China" --save /etc/pacman.d/mirrorlist
 
-yay -S rate-mirrors-bin gvim wget
+yay -Sy rate-mirrors-bin gvim wget
 rate-mirrors --allow-root arch | sudo tee /etc/pacman.d/mirrorlist
 yay -Syu
 
