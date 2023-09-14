@@ -65,7 +65,7 @@ pacman -Sy --noconfirm networkmanager wpa_supplicant rsync zip unzip unrar fzf g
 
 systemctl enable NetworkManager.service
 
-echo "%wheel ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
+# echo "%wheel ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
 echo "Enter Username: "
 read username
 useradd -m -G wheel -s /bin/sh $username
