@@ -18,7 +18,7 @@ yay -Sy rate-mirrors-bin gvim wget
 rate-mirrors --allow-root arch | sudo tee /etc/pacman.d/mirrorlist
 yay -Syu
 
-yay -S make wlroots wayland-protocols pkgconf ninja patch catch2 spdlog-git waybar-hyprland-git brightnessctl pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber sof-firmware pavucontrol polkit-gnome grim slurp firefox hyprland-git wofi alacritty foot-git nemo mako neofetch btop viewnior swayidle swaylock-effects waylogout-git swww zoxide cliphist wtype wl-clipboard kora-icon-theme ttf-twemoji-color noto-fonts noto-fonts-emoji ttf-joypixels ttf-victor-mono-nerd bluez bluez-utils mpv ffmpeg gparted greetd greetd-tuigreet acpi usbutils xdg-utils ntfs-3g exfat-utils dosfstools
+yay -S make wlroots wayland-protocols pkgconf ninja patch catch2 spdlog-git waybar-hyprland-git brightnessctl pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber sof-firmware pavucontrol polkit-gnome grim slurp firefox hyprland-git wofi alacritty foot-git nemo mako neofetch btop viewnior swayidle swaylock-effects waylogout-git swww zoxide cliphist wtype wl-clipboard kora-icon-theme ttf-twemoji-color noto-fonts noto-fonts-emoji ttf-joypixels ttf-victor-mono-nerd bluez bluez-utils mpv ffmpeg gparted greetd greetd-tuigreet acpi usbutils xdg-utils ntfs-3g exfat-utils dosfstools mtpfs jmtpfs gvfs-mtp gvfs-gphoto2
 # noto-fonts-cjk ttf-jetbrains-mono ttf-font-awesome
 
 mkdir -p ~/.local/bin
