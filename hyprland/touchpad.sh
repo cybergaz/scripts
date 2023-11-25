@@ -8,12 +8,14 @@ if [ -z "$XDG_RUNTIME_DIR" ]; then
 fi
 
 export STATUS_FILE="$XDG_RUNTIME_DIR/touchpad.status"
+export NOTIFICATION_ID="/tmp/notify_id"
+export NOTIFICATION_ID2="/tmp/notify_id2"
 
 enable_touchpad() {
 	printf "true" >"$STATUS_FILE"
 
-	notify-send "lid sleep ENABLED"
-	notify-send -u normal "...  Touchpad Enabled  ..."
+	printf "$(notify-send 'lid sleep ENABLED' -p)" >"$NOTIFICATION_ID"
+	printf "$(notify-send '.  Touchpad Enabled  .' -p)" >"$NOTIFICATION_ID2"
 
 	hyprctl keyword "device:$HYPRLAND_DEVICE:enabled" true
 
@@ -24,8 +26,8 @@ enable_touchpad() {
 disable_touchpad() {
 	printf "false" >"$STATUS_FILE"
 
-	notify-send "lid sleep DISABLED"
-	notify-send -u normal ". Touchpad Disabled ."
+	notify-send "lid sleep DISABLED" -r "$(cat /tmp/notify_id)"
+	notify-send -u normal "Touchpad Disabled" -r "$(cat /tmp/notify_id2)"
 
 	hyprctl keyword "device:$HYPRLAND_DEVICE:enabled" false
 	hyprctl reload

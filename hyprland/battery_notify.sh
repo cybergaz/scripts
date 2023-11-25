@@ -12,7 +12,7 @@ while [ true ]; do
 		vcrit_flag=0
 		if (($capc == 100)); then
 			if ((full_flag != 1)); then
-				notify-send "    Battery FULL" "are you planning to blast me!!\ndetach that fuckin charger man.."
+				notify-send "    Battery FULL" "are you planning to blast me?!\ndetach that fuckin charger man.."
 				full_flag=1
 			fi
 		fi

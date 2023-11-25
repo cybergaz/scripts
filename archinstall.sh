@@ -61,15 +61,15 @@ sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g' /etc/default/grub
 sed -i 's/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=false/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-pacman -Sy --noconfirm networkmanager wpa_supplicant rsync zip unzip unrar fzf git vim
+pacman -Sy --noconfirm networkmanager wpa_supplicant rsync zip unzip unrar fzf git vim ttf-jetbrains-mono
 
 systemctl enable NetworkManager.service
 
-# echo "%wheel ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
 echo "Enter Username: "
 read username
 useradd -m -G wheel -s /bin/sh $username
 passwd $username
+echo "%wheel ALL=(ALL:ALL) ALL" >>/etc/sudoers
 
 sed -i 's/#HandlePowerKey=poweroff/HandlePowerKey=ignore/' /etc/systemd/logind.conf
 sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf

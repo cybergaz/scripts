@@ -1,8 +1,7 @@
 temp=$1
-list=( $(sudo updatedb && cd / && sudo locate $temp) )
+list=($(sudo updatedb && cd / && sudo locate $temp))
 
-
-for i in "${list[@]}"
-do
+for i in "${list[@]}"; do
+	echo "removed: $i"
 	sudo rm -rf $i
 done
