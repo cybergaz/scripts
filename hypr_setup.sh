@@ -5,7 +5,7 @@
 sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak &&
 	sudo cp ~/scripts/mirrorlist /etc/pacman.d/mirrorlist &&
 	sudo cp ~/scripts/pacman.conf /etc/pacman.conf &&
-	sudo pacman -Sy --needed git base-devel && git clone https://aur.archlinux.org/yay.git ~/yay_build && cd ~/yay_build && makepkg -si &&
+	sudo pacman -Sy --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git ~/yay_build && cd ~/yay_build && makepkg -si &&
 	rm -rf ~/yay_build &&
 
 	# sudo reflector --country "Austrelia,Germany,India,Taiwan,Singapore,Thailand,China" --save /etc/pacman.d/mirrorlist &&
