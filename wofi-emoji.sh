@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sed '1,/^### DATA ###$/d' $0 | awk '{print $1}'| wofi --show dmenu -i -w 8 -s $HOME/.config/wofi/style_emoji.css | cut -d ' ' -f 1 | tr -d '\n' | wl-copy
+sed '1,/^### DATA ###$/d' $0 | awk '{print $1}'| wofi --show dmenu -i -w 8 --conf $HOME/.config/wofi/config_emoji -s $HOME/.config/wofi/style_emoji.css | cut -d ' ' -f 1 | tr -d '\n' | wl-copy
 exit
 ### DATA ###
 😀 grinning face face smile happy joy :D grin

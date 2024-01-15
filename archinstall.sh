@@ -1,6 +1,6 @@
 #part1
 clear
-echo "Welcome to Gaz's arch installer script"
+echo "Welcome to Gaz's arch install script"
 sleep 1
 sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 10/" /etc/pacman.conf
 reflector --country "Austrelia,Germany,India,Taiwan,Singapore,Thailand,China" --save /etc/pacman.d/mirrorlist
@@ -78,5 +78,9 @@ sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.
 sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSwitchExternalPower=ignore/' /etc/systemd/logind.conf
 
 git clone https://github.com/cybergaz/scripts /home/$username/scripts
+chown $username /home/$username/scripts
+chmod u+rwx /home/$username/scripts
 
-echo -e "\n\nPre-Installation Finish Reboot now"
+echo -e "\n\n\n\n--------------------------------------------------"
+echo -e "\tArch Installation Finished Reboot now"
+echo "--------------------------------------------------"
