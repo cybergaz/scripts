@@ -1,6 +1,5 @@
 # scripts
 
-here are some basic looking scripts , but they all provide a huge-masive-functionality , basically saves a hell lot of time and increase productivity ,
-
+here are some scripts , with some massive-functionality , which ease down my workflow , making it a little less cumbersome    
 at least for me...
 
