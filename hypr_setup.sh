@@ -5,10 +5,9 @@ ping_host="8.8.8.8"
 # Check internet connectivity
 if ping -q -c 1 -W 1 "$ping_host" >/dev/null; then
 	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
-	echo -e "\t\t\t\t\t\tinternet connection is available , proceeding with the script"
+	echo -e "\t\t\t\t\t\t internet connection is available , proceeding with the script"
 	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
 
-	# script goes here
 	# important for DNS resolution , cause some software/services only depended upon /etc/resolv.conf
 	sudo ln -rsf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
@@ -16,14 +15,35 @@ if ping -q -c 1 -W 1 "$ping_host" >/dev/null; then
 	sudo cp ~/scripts/mirrorlist /etc/pacman.d/mirrorlist
 	sudo cp ~/scripts/pacman.conf /etc/pacman.conf
 
+	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
+	echo -e "\t\t\t\t\t\t installing : YAY (AUR helper)"
+	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
 	sudo pacman -Sy --needed git base-devel reflector && git clone https://aur.archlinux.org/yay-bin.git ~/yay_build && cd ~/yay_build && makepkg -si
 	rm -rf ~/yay_build
+
+	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
+	echo -e "\t\t\t\t\t\t installing : rate-mirrors (for mirror ranking)"
+	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
 	# sudo reflector --country "Austrelia,Germany,India,Taiwan,Singapore,Thailand,China" --save /etc/pacman.d/mirrorlist &&
 	yay -Sy rate-mirrors && rate-mirrors --allow-root arch | sudo tee /etc/pacman.d/mirrorlist
-	yay -Syu
-	yay -S vim wget less ripgrep make wlroots wayland-protocols pkgconf ninja patch catch2 spdlog-git waybar brightnessctl pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber sof-firmware pavucontrol polkit-gnome grim slurp fish-git fisher-git firefox-nightly-bin hyprland-git wofi alacritty foot-git nemo mako neofetch btop viewnior swayidle swaylock-effects swww zoxide cliphist wtype wl-clipboard kora-icon-theme ttf-twemoji-color noto-fonts noto-fonts-emoji ttf-joypixels ttf-jetbrains-mono ttf-comfortaa ttf-poppins bluez bluez-utils mpv ffmpeg gparted greetd greetd-tuigreet acpi usbutils xdg-utils xdg-desktop-portal-hyprland-git ntfs-3g exfat-utils dosfstools mtpfs jmtpfs gvfs-mtp gvfs-gphoto2 neovim rsync iwgtk
-	# noto-fonts-cjk ttf-jetbrains-mono ttf-font-awesome &&
 
+	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
+	echo -e "\t\t\t\t\t\t starting system update"
+	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
+	yay -Syu
+
+	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
+	echo -e "\t\t\t\t\t\t installing : packages"
+	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
+	yay -S vim neovim rsync wget less ripgrep make wlroots wayland-protocols hyprland-git pkgconf ninja patch catch2 spdlog waybar brightnessctl pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber sof-firmware pavucontrol polkit-gnome grim slurp fish fisher firefox-nightly-bin wofi alacritty nemo mako neofetch btop viewnior swww zoxide cliphist wtype wl-clipboard kora-icon-theme layan-gtk-theme-git ttf-twemoji-color noto-fonts noto-fonts-emoji ttf-joypixels ttf-jetbrains-mono ttf-comfortaa ttf-poppins ttf-noto-nerd bluez bluez-utils mpv ffmpeg greetd greetd-tuigreet acpi usbutils xdg-utils xdg-desktop-portal-wlr ntfs-3g exfat-utils dosfstools mtpfs jmtpfs gvfs-mtp gvfs-gphoto2 iwgtk ||
+		echo "-------------------------------------------------------------------------------------------------------------------------------------------------------" &&
+		echo -e "\t\t\t\t\t\t something went wrong while installing packages, aborting script" &&
+		echo "-------------------------------------------------------------------------------------------------------------------------------------------------------" &&
+		exit
+
+	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
+	echo -e "\t\t\t\t\t\t configuring system"
+	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
 	mkdir -p ~/.local/bin
 	mkdir -p ~/.local/share/icons
 	mkdir -p ~/Pictures/Screenshots
@@ -36,11 +56,11 @@ if ping -q -c 1 -W 1 "$ping_host" >/dev/null; then
 
 		# gtk theming
 		git clone https://github.com/yeyushengfan258/Lyra-Cursors && cd Lyra-Cursors && ./install.sh &&
-		sudo cp -r ~/hyprland_temp/gtk/Layan-Dark /usr/share/themes/ &&
 		# sudo cp -r ~/hyprland_temp/gtk/cursor/LyraB /usr/share/icons/ &&
 		gsettings set org.gnome.desktop.interface gtk-theme Layan-Dark &&
 		gsettings set org.gnome.desktop.interface icon-theme kora &&
 		gsettings set org.gnome.desktop.interface cursor-theme LyraB &&
+		sudo cp -r ~/hyprland_temp/gtk/Layan-Dark /usr/share/themes/ &&
 
 		# essensial services
 		systemctl --user enable --now pipewire.socket &&
@@ -70,14 +90,16 @@ if ping -q -c 1 -W 1 "$ping_host" >/dev/null; then
 		echo "----------------------------------------------" &&
 		exit
 
-	echo -e "\n\n\n\nsomething went wrong with the installation "
+	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
+	echo -e "\t\t\t\t\t\t something went wrong during configuration"
+	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
 
 else
 
 	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
 	echo -e "\t\t\t\tInternet connection is not available , Aborting the script."
 	echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
-	echo -e "connection help : (if you use iwd -> \"iwctl station wlan0 connect [Network-Name]\" ; else use -> \"nmtui\")"
+	echo -e "connection help : (if you use iwd -> \"iwctl station wlan0 connect [Network-Name]\" || else use -> \"nmtui\")"
 
 	exit 1
 fi

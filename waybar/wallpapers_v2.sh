@@ -4,7 +4,7 @@
 # until all the wallpapers has cycled ones then only it will consider used wallpapers again
 
 # source directory for images
-image_directory="$HOME/Downloads/img"
+image_directory="$HOME/Downloads/wallpapers/"
 
 # check if the daemon is already running
 if ! pgrep -x swww-daemon >/dev/null; then

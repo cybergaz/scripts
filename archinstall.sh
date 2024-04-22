@@ -82,5 +82,5 @@ chown $username /home/$username/scripts
 chmod u+rwx /home/$username/scripts
 
 echo -e "\n\n\n\n--------------------------------------------------"
-echo -e "\tArch Installation Finished Reboot now"
+echo -e "\tarch installation finished, you can exit and reboot now"
 echo "--------------------------------------------------"

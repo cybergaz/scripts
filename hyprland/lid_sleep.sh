@@ -20,7 +20,7 @@ nid=$(get_notification_id)
 enable_lidsleep() {
 	printf "true" >"$LID_STATUS"
 	hyprctl reload
-	hyprctl --batch "keyword bindl ,switch:on:Lid Switch,exec,systemctl suspend ; keyword bindl ,switch:off:Lid Switch,exec,notify-send '     𝕎 𝕖 𝕝 𝕔 𝕠 𝕞 𝕖  𝔹 𝕒 𝕔 𝕜  𝔾 𝕒 𝕫     ' "
+	hyprctl --batch "keyword bindl ,switch:on:Lid Switch,exec,systemctl suspend ; keyword bindl ,switch:off:Lid Switch,exec,notify-send '    𝕎 𝕖 𝕝 𝕔 𝕠 𝕞 𝕖  𝔹 𝕒 𝕔 𝕜  𝔾 𝕒 𝕫    ' "
 	notify-send -p -r $nid '.   lid sleep   :   ON   .' >$NOTIFYID
 
 }

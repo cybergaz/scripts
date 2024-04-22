@@ -1,9 +1,10 @@
 #!/bin/bash
 
-sed '1,/^### DATA ###$/d' $0 | awk '{print $1}'| wofi --show dmenu -i -w 8 --conf $HOME/.config/wofi/config_emoji -s $HOME/.config/wofi/style_emoji.css | cut -d ' ' -f 1 | tr -d '\n' | wl-copy
+sed '1,/^### DATA ###$/d' $0 | awk '{print $1}'| (wofi --show dmenu -i -w 8 --conf $HOME/.config/wofi/config_emoji -s $HOME/.config/wofi/style_emoji.css || echo "😀 grinning face face smile happy joy :d grin
+") | cut -d ' ' -f 1 | tr -d '\n' | wl-copy
 exit
 ### DATA ###
-😀 grinning face face smile happy joy :D grin
+😀 grinning face face smile happy joy :d grin
 😃 grinning face with big eyes face happy joy haha :D :) smile funny
 😄 grinning face with smiling eyes face happy joy funny haha laugh like :D :) smile
 😁 beaming face with smiling eyes face happy smile joy kawaii
