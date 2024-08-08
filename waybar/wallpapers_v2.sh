@@ -7,9 +7,9 @@
 image_directory="$HOME/Downloads/wallpapers/"
 
 # check if the daemon is already running
-if ! pgrep -x swww-daemon >/dev/null; then
-	swww init
-	echo "successfully enabled the swww daemon"
+if ! pgrep -x "swww-daemon" >/dev/null; then
+	nohup swww-daemon --no-cache &
+	# echo "successfully enabled the swww daemon"
 	echo $(ls $image_directory | wc -l) | cat >/tmp/swww_number_of_img
 fi
 
@@ -39,7 +39,7 @@ fi
 # choose a random file from the temporary indexed files
 random_line=$(shuf -n 1 "$unused_file_path")
 # update the wallpaper with that newly chosen random file
-swww img $random_line --transition-type grow --transition-step 0 --transition-pos top --transition-fps 255 --transition-bezier .2,1.7,0.4,1
+swww img $random_line --transition-type wave --transition-angle 0 --transition-pos bottom --transition-step 4 --transition-fps 255 --transition-bezier .2,1.7,0.4,1
 # delete the line(file) from the temporary indexed file to make sure it will never get chosen at random (it will be available again once it done iterating over each file)
 escaped_line=$(printf "%s\n" "$random_line" | sed 's/[\/&]/\\&/g')
 sed -i "/$escaped_line/d" "$unused_file_path"

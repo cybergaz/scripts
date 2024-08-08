@@ -22,7 +22,8 @@ exit
 🤩 star struck face smile starry eyes grinning
 😘 face blowing a kiss face love like affection valentines infatuation kiss
 😗 kissing face love like face 3 valentines infatuation kiss
-☺️ smiling face face blush massage happiness
+☺️  smiling face face blush massage happiness
+🥲 smiling face with tear sad cry pretend
 😚 kissing face with closed eyes face love like affection valentines infatuation kiss
 😙 kissing face with smiling eyes face affection valentines infatuation kiss
 😋 face savoring food happy joy tongue smile face silly yummy nom delicious savouring
@@ -31,13 +32,26 @@ exit
 🤪 zany face face goofy crazy
 😝 squinting face with tongue face prank playful mischievous smile tongue
 🤑 money mouth face face rich dollar money
+🫠 melting face hot heat
+😶‍🌫️ face in clouds shower steam dream
+😮‍💨 face exhaling relieve relief tired sigh
+😵‍💫 face with spiral eyes sick ill confused nauseous nausea
+🫢 face with open eyes and hand over mouth silence secret shock surprise
+🫣 face with peeking eye scared frightening embarrassing
+🫡 saluting face respect salute
+🫥 dotted line face invisible lonely isolation depression
+🌝 full moon face nature twilight planet space night evening sleep
+🌚 new moon face nature twilight planet space night evening sleep
+🥸 disguised face pretent brows glasses moustache
+🫤 face with diagonal mouth skeptic confuse frustrated indifferent
+🥹 face holding back tears touched gratitude
 🤗 hugging face face smile hug
 🤭 face with hand over mouth face whoops shock surprise
 🤫 shushing face face quiet shhh
 🤔 thinking face face hmmm think consider
 🤐 zipper mouth face face sealed zipper secret
 🤨 face with raised eyebrow face distrust scepticism disapproval disbelief surprise
-😐 neutral face indifference meh :| neutral
+😐 neutral face indifference meh 
 😑 expressionless face face indifferent - - meh deadpan
 😶 face without mouth face hellokitty
 😏 smirking face face smile mean prank smug sarcasm
@@ -907,12 +921,10 @@ exit
 🌗 last quarter moon nature twilight planet space night evening sleep
 🌘 waning crescent moon nature twilight planet space night evening sleep
 🌙 crescent moon night sleep sky evening magic
-🌚 new moon face nature twilight planet space night evening sleep
 🌛 first quarter moon face nature twilight planet space night evening sleep
 🌜 last quarter moon face nature twilight planet space night evening sleep
 🌡️ thermometer weather temperature hot cold
 ☀️ sun weather nature brightness summer beach spring
-🌝 full moon face nature twilight planet space night evening sleep
 🌞 sun with face nature morning sky
 🪐 ringed planet outerspace
 ⭐ star night yellow
@@ -1742,8 +1754,6 @@ exit
 🏴󠁧󠁢󠁥󠁮󠁧󠁿 flag england flag english
 🏴󠁧󠁢󠁳󠁣󠁴󠁿 flag scotland flag scottish
 🏴󠁧󠁢󠁷󠁬󠁳󠁿 flag wales flag welsh
-🥲 smiling face with tear sad cry pretend
-🥸 disguised face pretent brows glasses moustache
 🤌 pinched fingers size tiny small
 🫀 anatomical heart health heartbeat
 🫁 lungs breathe
@@ -1809,20 +1819,10 @@ exit
 🪧 placard announcement
 ⚧️ transgender symbol lgbtq
 🏳️‍⚧️ transgender flag lgbtq
-😶‍🌫️ face in clouds shower steam dream
-😮‍💨 face exhaling relieve relief tired sigh
-😵‍💫 face with spiral eyes sick ill confused nauseous nausea
 ❤️‍🔥 heart on fire passionate enthusiastic
 ❤️‍🩹 mending heart broken heart bandage wounded
 🧔‍♂️ man beard facial hair
 🧔‍♀️ woman beard facial hair
-🫠 melting face hot heat
-🫢 face with open eyes and hand over mouth silence secret shock surprise
-🫣 face with peeking eye scared frightening embarrassing
-🫡 saluting face respect salute
-🫥 dotted line face invisible lonely isolation depression
-🫤 face with diagonal mouth skeptic confuse frustrated indifferent
-🥹 face holding back tears touched gratitude
 🫱 rightwards hand palm offer
 🫲 leftwards hand palm offer
 🫳 palm down hand palm drop
