@@ -16,14 +16,14 @@ read partition
 mkfs.ext4 $partition
 read -p "have you created new efi partition? [y/n]" answer
 if [[ $answer = y ]]; then
-	echo "Enter EFI partition: "
-	read efipartition
-	mkfs.vfat -F 32 $efipartition
+    echo "Enter EFI partition: "
+    read efipartition
+    mkfs.vfat -F 32 $efipartition
 fi
 mount $partition /mnt
 pacstrap /mnt base base-devel linux linux-firmware
 genfstab -U /mnt >>/mnt/etc/fstab
-sed '1,/^#part2$/d' $(basename $0) >/mnt/arch_install2.sh
+sed '1,/^#part2$/d' "$(dirname "$0")/$(basename "$0")" >/mnt/arch_install2.sh
 chmod +x /mnt/arch_install2.sh
 arch-chroot /mnt ./arch_install2.sh
 exit
