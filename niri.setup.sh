@@ -35,7 +35,7 @@ if ping -q -c 1 -W 1 "$ping_host" >/dev/null; then
   echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
   echo -e "\t\t\t\t\t\t installing : packages"
   echo "-------------------------------------------------------------------------------------------------------------------------------------------------------"
-  yay -S vim neovim rsync wget less ripgrep make wlroots wayland-protocols hyprland pkgconf ninja patch catch2 spdlog waybar brightnessctl pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber sof-firmware pavucontrol polkit-gnome grim slurp fish fisher firefox-nightly-bin wofi alacritty nemo mako neofetch btop viewnior swww zoxide cliphist wtype wl-clipboard kora-icon-theme layan-gtk-theme-git ttf-twemoji-color noto-fonts noto-fonts-emoji ttf-joypixels ttf-jetbrains-mono ttf-comfortaa ttf-poppins ttf-noto-nerd bluez bluez-utils mpv ffmpeg greetd greetd-tuigreet acpi usbutils xdg-utils xdg-desktop-portal-wlr ntfs-3g exfat-utils dosfstools mtpfs jmtpfs gvfs-mtp gvfs-gphoto2 iwgtk lolcat
+  yay -S vim neovim rsync wget less ripgrep make wlroots wayland-protocols niri pkgconf ninja patch catch2 spdlog waybar brightnessctl pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber sof-firmware pavucontrol polkit-gnome grim slurp fish fisher zen-browser-bin wofi alacritty nemo mako neofetch btop viewnior swww zoxide cliphist wtype wl-clipboard kora-icon-theme layan-gtk-theme-git ttf-twemoji-color noto-fonts noto-fonts-emoji ttf-joypixels ttf-jetbrains-mono ttf-comfortaa ttf-poppins ttf-noto-nerd bluez bluez-utils mpv ffmpeg ly acpi usbutils xdg-utils xdg-desktop-portal-wlr ntfs-3g exfat-utils dosfstools mtpfs jmtpfs gvfs-mtp gvfs-gphoto2 iwgtk lolcat
 
   # echo "-------------------------------------------------------------------------------------------------------------------------------------------------------" &&
   #     echo -e "\t\t\t\t\t\t something went wrong while installing packages, aborting script" &&
@@ -49,19 +49,18 @@ if ping -q -c 1 -W 1 "$ping_host" >/dev/null; then
   mkdir -p ~/.local/share/icons
   mkdir -p ~/Pictures/Screenshots
 
-  git clone https://github.com/cybergaz/hyprland_rice ~/hyprland_temp
-  cp -r ~/hyprland_temp/.config ~ &&
+  git clone https://github.com/cybergaz/niri-conf ~/niri_temp
+  cp -r ~/niri_temp/.config ~ &&
     sudo rm -rf ~/scripts &&
     cd ~ && git clone https://github.com/cybergaz/scripts &&
-    sudo cp ~/hyprland_temp/pacman.conf /etc/ &&
+    sudo cp ~/niri_temp/pacman.conf /etc/ &&
 
     # gtk theming
     git clone https://github.com/yeyushengfan258/Lyra-Cursors && cd Lyra-Cursors && ./install.sh &&
-    # sudo cp -r ~/hyprland_temp/gtk/cursor/LyraB /usr/share/icons/ &&
     gsettings set org.gnome.desktop.interface gtk-theme Layan-Dark &&
     gsettings set org.gnome.desktop.interface icon-theme kora &&
     gsettings set org.gnome.desktop.interface cursor-theme LyraB &&
-    sudo cp -r ~/hyprland_temp/gtk/Layan-Dark /usr/share/themes/ &&
+    sudo cp -r ~/niri_temp/gtk/Layan-Dark /usr/share/themes/ &&
 
     # essensial services
     systemctl --user enable --now pipewire.socket &&
@@ -73,9 +72,8 @@ if ping -q -c 1 -W 1 "$ping_host" >/dev/null; then
     git clone https://github.com/cybergaz/snow-vim ~/.config/nvim &&
 
     # display/login manager
-    sed -i "s/^user = '.*'\$/user = '$(whoami)'/" ~/hyprland_temp/greetd/config.toml &&
-    sudo cp -r ~/hyprland_temp/greetd /etc/ &&
-    sudo systemctl enable greetd.service &&
+    sudo cp ~/niri_temp/ly/config.ini /etc/ly/ &&
+    sudo systemctl enable ly.service &&
 
     # fish shell
     sudo chsh -s /usr/bin/fish $(whoami) &&
@@ -83,9 +81,9 @@ if ping -q -c 1 -W 1 "$ping_host" >/dev/null; then
     fish -c "fisher install IlanCosman/tide" &&
 
     # finishing up
-    echo "...hyprland setup completed..." &&
+    echo "...niri setup completed..." &&
     echo "cleaning up unnecessary files..." &&
-    rm -rf ~/hyprland_temp &&
+    rm -rf ~/niri_temp &&
     echo -e "\n\n\n\n----------------------------------------------" &&
     echo -e "\tdone......  you can reboot now" &&
     echo "----------------------------------------------" &&

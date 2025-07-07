@@ -1,1 +1,1 @@
-oklch-color-picker $(grim -g "$(slurp -p)" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:- | awk -F ' ' 'NR==2 {print $3}') | tr -d '[:space:]' | wl-copy
+oklch-color-picker $(niri msg pick-color | tail -n 1 | awk '{print $2}') | tr -d '[:space:]' | wl-copy
