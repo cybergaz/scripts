@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # v2 is because this script changes wallpapers randomly but do not apply the same wallpaper twice
 # until all the wallpapers has cycled ones then only it will consider used wallpapers again
