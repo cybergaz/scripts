@@ -1,5 +1,3 @@
-#!/bin/bash
-
 CONFIG_FILE="$HOME/.config/niri/config.kdl"
 
 # Patterns to match

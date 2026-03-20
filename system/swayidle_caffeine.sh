@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ -z "$XDG_RUNTIME_DIR" ]; then
     export XDG_RUNTIME_DIR=/run/user/$(id -u)
@@ -16,9 +16,11 @@ function get_notification_id {
 nid=$(get_notification_id)
 
 if pgrep -x swayidle.sh >/dev/null; then
-    notify-send -p -r $nid ".  Caffeine Enabled  ." >$NOTIFYID
+    # notify-send -p -r $nid ".  Caffeine Enabled  ." >$NOTIFYID
+    notify-send -i caffeine-cup-full -p -r $nid "Caffeine Enabled" >$NOTIFYID
     pkill swayidle
 else
-    notify-send -p -r $nid "Caffeine Disabled" >$NOTIFYID
-    $HOME/scripts/hyprland/swayidle.sh &
+    # notify-send -p -r $nid "Caffeine Disabled" >$NOTIFYID
+    notify-send -i caffeine-cup-empty -p -r $nid "Caffeine Disabled" >$NOTIFYID
+    $HOME/scripts/system/swayidle.sh &
 fi
