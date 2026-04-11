@@ -13,7 +13,7 @@ awk '
     -i \
     -w 12 \
     --conf "$HOME/.config/wofi/config_emoji" \
-    -s "$HOME/.config/wofi/style_emoji.css" \
-    --normal-window |
+    -s "$HOME/.config/wofi/style_emoji.css" |
+  # --normal-window |
   tr -d "\n" |
   wl-copy
